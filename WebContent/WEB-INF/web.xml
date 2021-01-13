@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <!-- <display-name>webapp1</display-name> -->
+  
+  <!-- 아무것도 언급하지 않았을때 위에서 아래방향으로 찾는다 spring 적용하면 무시가 된다 삭제해도됨-->
+  <!-- <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+   -->
+  
+  <!-- Root WebApplicationContext 설정 -->
+  <listener>
+  	<!-- webApplication WAS에 처음 실행될때 실행되는 객체 등록 -->
+  	<listener-class>
+  		org.springframework.web.context.ContextLoaderListener <!-- 처음 시작할때(was 실행) 실행되고  Root WebApplicationContext를 생성한다-->
+  	</listener-class>
+  </listener>  <!-- 안만들어도 에러발생 X  -->
+  
+ 
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>  <!-- 변수이름 -->
+  	<param-value>classpath:spring/root/*.xml</param-value> <!-- 경로를 통해 위치를 알려준다 -->
+  	
+  </context-param>
+  
+  
+  <servlet>
+  	<!-- WebApplicationContext 설정 -->
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> <!-- 실행되면서 파일생성 -->
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:spring/dispatcher/*.xml</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>  	<!--  배치할때 객체가 생성되고 실행하기 위해 적어준다 -->
+  </servlet>
+  
+  <!-- http://localhost:8080/webapp1/xxx (http://localhost:8080/webapp1 여기까지 기본으로 들어와야한다 webapp1 root폴더  //-->
+  <servlet-mapping>
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  
+ <!--  <servlet>
+  	WebApplicationContext 생성
+  	<servlet-name>dispatcher2</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:spring/dispatcher2/*.xml</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>  	
+  </servlet>
+
+	http://localhost:8080/webapp1/dispatcher2/xxx
+  <servlet-mapping>
+  	<servlet-name>dispatcher2</servlet-name>
+  	<url-pattern>/dispatcher2/*</url-pattern>
+  </servlet-mapping> -->
+</web-app>
