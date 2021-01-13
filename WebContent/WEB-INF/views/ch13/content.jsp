@@ -1,4 +1,5 @@
-<%@ contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -29,26 +30,7 @@
 				<jsp:include page="/WEB-INF/views/include/menu.jsp"/>
 				
 				<div class = "content">
-					<div class = "sector">
-						<h5>요청 매핑</h5>
-						<div>
-							GET 방식 :<a class="btn btn-info btn-sm" href="getMethod">request1 요청</a> <!-- get 방식 -->
-							
-							<form method="post" action="postMethod" sytle="inline=block; margin-top : 4px;">
-							POST 방식 : <button class="btn btn-danger btn-sm" >request1</button>  <!-- post 방식 -->
-							</form>
-						</div>
-					</div>
-					
-					
-					
-					<div class = "sector">
-						<h5>요청방식 별 회원 가입 처리</h5>
-						<div>
-							GET 방식 :<a class="btn btn-info btn-sm" href="join">회원가입</a> <!-- get 방식 -->
-						</div>
-					</div>
-					
+											
 					<div class = "sector">
 						<h5>Bee Dong기 처리</h5>
 						<div>
@@ -59,15 +41,13 @@
 									$.ajax({
 										url:"joinReal",
 										method:"get",
-										
 										success: function(data) {
 											$("#joinForm").html(data);
 										}
 									});
 								};
 							</script>
-							<div id="joinForm">					
-							</div>
+							<div id="joinForm"></div>
 						
 						</div>
 					</div>
