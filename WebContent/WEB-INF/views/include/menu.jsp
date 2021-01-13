@@ -21,7 +21,7 @@
 		<li class="chapter">Ch15. <a href="<%=application.getContextPath()%>/ch15/content">AOP(Aspect Oriented Programming)</a></li>
 		<li class="chapter">Ch16. <a href="<%=application.getContextPath()%>/ch16/content">Transaction</a></li>
 		<li class="chapter">Ch17. <a href="<%=application.getContextPath()%>/ch17/content">Spring Security</a></li>		 --%>
-		<li class="chapter">Ch13. <a href="<%=application.getContextPath()%>/ch13/content">Rule the world</a></li>
+		<li class="chapter">Ch13. <a href="<%=application.getContextPath()%>/ch13/content">Want to go outside and get yourself cold?</a></li>
 
 	</ul>			
 </div>
