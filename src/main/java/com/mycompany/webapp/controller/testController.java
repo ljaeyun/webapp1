@@ -3,8 +3,8 @@ package com.mycompany.webapp.controller;
 public class testController {
 
 	// Field
-	private String field1;
 	
+	String git2="gitgit2";
 	
 	// constructor
 	// method
