@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.ch03dto;
+
 @Controller
 @RequestMapping("/ch03")
 public class ch03Controller {
@@ -66,6 +68,17 @@ public class ch03Controller {
 		logger.info("param3:" + param3);
 		logger.info("param4:" + param4);
 		
+		return "ch03/content"; 
+	}
+	
+	@RequestMapping("/method4")
+	public String method4(ch03dto dto)
+	{
+		logger.info("param1:" + dto.getParam1());
+		logger.info("param2:" + dto.getParam2());
+		logger.info("param3:" + dto.getParam3());
+		logger.info("param4:" + dto.isParam4());   // boolean 은 is
+		logger.info("param4:" + dto.getParam5());
 		return "ch03/content"; 
 	}
 }
