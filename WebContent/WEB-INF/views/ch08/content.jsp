@@ -53,6 +53,14 @@
 					</div>
 					
 					
+					<div class="sector">
+					
+						<form method="post" action="boardWrite">
+							<input type="text" name="title" placeholder="제목"/><br>
+							<textarea rows="100" cols="5" name="content" placeholder="내용"></textarea><br>
+							<button class="btn btn-info btn-sm">등록</button>
+						</form>
+					</div>
 					
 				</div>
 				
