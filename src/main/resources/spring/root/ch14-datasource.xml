@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		
+		<!-- jdbc 이름 -->
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property> <!-- 문자열로 값을 준다 dbms 가 달라지면 값도 달라진다-->
+		<property name="url" value="jdbc:oracle:thin:@192.168.3.125:1521:orcl"></property> <!-- ip 포트번호 sid -->
+		<property name="username" value="hr"></property>
+		<property name="password" value="123456"></property>
+		<property name="initialSize" value="1"></property>
+		<property name="maxTotal" value="1"></property> <!-- 최대로만들수있는 connection 수 -->
+		<property name="maxIdle" value="1"></property> <!--  3개만 남기고 다 연결을 끊는다 -->
+		
+				
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis/mapper-config.xml"/>
+		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
+	
+</beans>
