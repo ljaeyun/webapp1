@@ -2,7 +2,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mybatis.mapper.boards">
+<mapper namespace="boards">
 	<select id="selectAll"
 			resultType = "board">
 		select
@@ -12,15 +12,84 @@
 			bhitcount,
 			bdate
 		from boards
+		order by bno desc
 	</select>
 	
+	
+	
+	<select id="countAll" resultType = "int" >
+		select count(*) from boards
+	</select>
+	
+	<select id="selectByPage" parameterType ="pager" resultType="board">
+	select rno,bno,btitle,bwriter,bhitcount,bdate
+		from(
+		    select rownum as rno,bno,btitle,bwriter,bhitcount,bdate
+		    from (
+		        select
+					bno,
+					btitle,
+					bwriter,
+					bhitcount,
+					bdate
+				from boards
+				order by bno desc
+		    )
+		    where rownum &lt;= #{endRowNo}
+		)
+		where rno &gt;= #{startRowNo}
+	</select>
+	
+	<select id="selectByPk" parameterType="int" resultType="board">
+		select
+			bno,
+			btitle,
+			bcontent,
+			bwriter,
+			bhitcount,
+			bdate,
+			battachsavefilename,
+			battachoriginalfilename,
+			battachcontenttype
+		from boards
+		where bno=#{bno}
+	</select>
+	
+	
 	<insert id ="insert" parameterType="board">
-		insert into boards
-		(bno, btitle, bcontent, bwriter, bdate, bhitcount)
-		values
-		(bno_seq.nextval, #{btitle}, #{bcontent}, #{bwriter}, sysdate, 0)
-		
+		<if test="battachsavefilename == null">
+			insert into boards
+			(bno, btitle, bcontent, bwriter, bdate, bhitcount)
+			values
+			(bno_seq.nextval, #{btitle}, #{bcontent}, #{bwriter}, sysdate, 0)
+		</if>
+		<if test="battachsavefilename != null">
+			insert into boards
+			(bno, btitle, bcontent, bwriter, bdate, bhitcount, battachsavefilename, battachoriginalfilename, battachcontenttype)
+			values
+			(bno_seq.nextval, #{btitle}, #{bcontent}, #{bwriter}, sysdate, 0, #{battachsavefilename}, #{battachoriginalfilename}, #{battachcontenttype})
+		</if>
 	</insert>
+	
+	<update id ="update" parameterType="board">
+		update boards
+		set	btitle=#{btitle}, bcontent=#{bcontent}
+		where bno=#{bno}
+			
+		
+	</update>
+	
+		<update id ="updateHitcount">
+		update boards
+		set	bhitcount=bhitcount+1
+		where bno=#{bno}
+			
+		
+	</update>
+	
+	<delete id ="delete" parameterType="int">
+		delete from boards where bno=#{bno}
+	</delete>
 	
 </mapper>
 

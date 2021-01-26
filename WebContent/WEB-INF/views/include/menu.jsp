@@ -18,7 +18,7 @@
 		<li class="chapter">Ch12. <a href="<%=application.getContextPath()%>/ch12/content">View - BeanNameViewResolver</a></li> --%>				
 		<li class="chapter">Ch13. <a href="<%=application.getContextPath()%>/ch13/content">DI(Dependency Injection)</a></li>
 		<li class="chapter">Ch14. <a href="<%=application.getContextPath()%>/ch14/content">DAO(Data Access Object)</a></li>
-		<li class="chapter">Ch14.board <a href="<%=application.getContextPath()%>/ch14/boardlist">boardlist</a></li>
+		<li class="chapter">Ch14.board <a href="<%=application.getContextPath()%>/ch14/boardlist2">boardlist</a></li>
 		<%--<li class="chapter">Ch15. <a href="<%=application.getContextPath()%>/ch15/content">AOP(Aspect Oriented Programming)</a></li>
 		<li class="chapter">Ch16. <a href="<%=application.getContextPath()%>/ch16/content">Transaction</a></li>
 		<li class="chapter">Ch17. <a href="<%=application.getContextPath()%>/ch17/content">Spring Security</a></li>		 --%>

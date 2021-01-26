@@ -29,40 +29,61 @@
 				<%-- 공통 메뉴 --%>
 				<jsp:include page="/WEB-INF/views/include/menu.jsp"/>
 				
-				<div class = "content">
-											
-					<div class = "sector">
-						<h5>Bee Dong기 처리</h5>
-						<div>
-							GET 방식 :<a class="btn btn-info btn-sm" href="javascript:fun1()">해원가입</a> <!-- get 방식 -->
-							<script>
-								function fun1() {
+				<div class="content">
+							<div class="sector">
+								<h5>HttpSession 객체를 이용한 스칼라값 전달</h5>
+								<div>
+									<a class="btn btn-info btn-sm" href="method1">전달</a>
+								</div>
+							</div>
+							
+							<div class="sector">
+								<h5>HttpSession 객체를 이용한 객체  전달</h5>
+								<div>
+									<a class="btn btn-info btn-sm" href="method2">전달</a>
+								</div>
+							</div>
+							
+							<div class="sector">
+								<h5>HttpSession 객체를 이용한 컬렉션 전달</h5>
+								<div>
+									<a class="btn btn-info btn-sm" href="method3">전달</a>
+								</div>
+							</div>
+							
+							<div class="sector">
+								<h5>HttpSession 객체를 이용한 로그인</h5>
+									<c:if test="${loginStatus == null}">
+										<div>
+											<form method="post" action="login">
+												<input type="text" name="uid" placeholder="아이디"/> <br/>
+												<input type="password" name="upassword" placeholder="패스워드"/> <br/>
+												<button class="btn btn-success btn-sm">로그인</button>
+											</form>
+										</div>
+									</c:if>
 									
-									$.ajax({
-										url:"joinReal",
-										method:"get",
-										success: function(data) {
-											$("#joinForm").html(data);
-										}
-									});
-								};
-							</script>
-							<div id="joinForm"></div>
-						
-						</div>
+									<c:if test="${loginStatus != null}">
+										<div>
+											<a class="btn btn-danger btn-sm" href="logout">로그아웃</a>
+										</div>
+									</c:if>
+							</div>
+							
+							<c:if test="${loginStatus != null}">
+								<div class="sector">
+									<h5>게시물 입력</h5>
+									<div>
+										<form method="post" action="boardWrite">
+											<input type="text" name="title" placeholder="제목"/> <br/>
+											<textarea rows="3" cols="100" name="content" placeholder="내용"></textarea> <br/>
+											<button class="btn btn-info btn-sm">저장</button>
+										</form>
+									</div>
+								</div>
+							</c:if>
+							
 					</div>
-					
-					
-					<div class="sector">
-					
-						<form method="post" action="boardWrite">
-							<input type="text" name="title" placeholder="제목"/><br>
-							<textarea rows="100" cols="5" name="content" placeholder="내용"></textarea><br>
-							<button class="btn btn-info btn-sm">등록</button>
-						</form>
-					</div>
-					
-				</div>
 				
 				
 		</div>

@@ -2,7 +2,7 @@ package com.mycompany.webapp.dto;
 
 import java.util.Date;
 
-public class ch08Board {
+public class Ch07Board {
 	private int no;
 	private String title;
 	private String content;
@@ -39,6 +39,4 @@ public class ch08Board {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	 
-	 
 }
